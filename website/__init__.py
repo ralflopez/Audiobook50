@@ -9,4 +9,9 @@ def create_app():
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_TYPE'] = 'filesystem'
 
+    # register routes
+    from .views import views
+
+    app.register_blueprint(views, url_prefix='/')
+
     return app
