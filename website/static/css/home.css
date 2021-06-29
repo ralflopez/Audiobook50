@@ -1,0 +1,45 @@
+img {
+    object-fit: cover;
+}
+
+h1 {
+    font-size: 5vw;
+    font-weight: 700;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+.circle-action {
+    background-color: var(--cbs-secondary);
+    width: 150px;
+    height: 150px;
+    border-radius: 9999px;
+    padding: 25px;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.circle-action:hover {
+    color: white;
+    background-color: var(--cbs-secondary-hover);
+}
+
+.bg-img {
+    position: absolute;
+    z-index: -10;
+}
+
+@media (max-width: 767.98px) {
+    h1 {
+        font-size: 3rem;
+    }
+    p {
+        font-size: 1.2rem;
+    }
+}

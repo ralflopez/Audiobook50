@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Home
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename="css/home.css")}}" rel="stylesheet" />
+{% endblock %}
+
+{% block main%}
+    <div class="container-fluid overflow-hidden">
+        <div class="row full-height">
+            <div class="col-12 col-md-7 full-height d-flex flex-column justify-content-around position-relative p-0">
+                <div class="text-cener">
+                    <h1 class="mb-3 text-center">Audiobook<span class="text-primary">50</span></h1>
+                    <p class="text-center">Listen to your favorite audio books with captions</p>
+                </div>
+                <div class="text-center">
+                    <a href="/catalogue" class="btn circle-action">
+                        Listen
+                    </a>
+                </div>
+                <img src="{{url_for('static', filename="img/headphones.png")}}" alt="headphones" class="bg-img" />
+            </div>
+            <div class="col-5 d-none d-md-block full-height bg-secondar position-relative p-0">
+                <img class="potision-absolute fit-container" src="{{url_for('static', filename="img/listen.jpg")}}" alt="audiobook50" />
+            </div>
+        </div>
+    </div>
+{% endblock %}

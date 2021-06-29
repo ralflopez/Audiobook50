@@ -1,3 +1,7 @@
+body {
+    font-family: 'Mukta', sans-serif;
+}
+
 :root {
     --cbs-primary: #1DC4DD;
     --cbs-secondary: #1F1F1F;
@@ -23,7 +27,7 @@ bg-primary {
 }
 
 .text-primary {
-    color: var(--cbs-primary);
+    color: var(--cbs-primary) !important;
 }
 
 .btn-primary {
@@ -47,7 +51,7 @@ bg-seconday {
 }
 
 .text-secondary {
-    color: var(--cbs-secondary);
+    color: var(--cbs-secondary) !important;
 }
 
 .btn-secondary {
@@ -65,7 +69,7 @@ bg-seconday {
 /* global css */
 
 .full-height {
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .fit-container {

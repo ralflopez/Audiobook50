@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Home
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='/js/player.js')}}"></script>
+{% endblock %}
+
+{% block main%}
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <style>
+    .active {
+        background-color: 'gold'
+    }
+    </style>
+    <div id="player"></div>
+    <button id="play">play</button>
+    <button id="stop">stop</button>
+    <div id="transcript-parent-container"></div>
+{% endblock %}
