@@ -10,7 +10,7 @@ body {
 }
 
 .btn {
-    border-width: 0;
+    border-width: 0px;
 }
 
 .btn:hover, .btn:focus {
@@ -43,6 +43,7 @@ bg-primary {
 
 input:hover, input:focus {
     box-shadow: var(--cbs-primary) !important;
+    border-color: var(--cbs-primary);
 }
 
 

@@ -14,6 +14,7 @@ def create_app():
     app.config['SESSION_PERMANENT'] = False
     app.config['SESSION_TYPE'] = 'filesystem'
     app.config['TEMPLATES_AUTO_RELOAD'] = True
+    Session(app)
 
     # register routes
     from .views import views
