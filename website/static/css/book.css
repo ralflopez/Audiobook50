@@ -1,0 +1,35 @@
+.title {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+.mt-spacing {
+    margin-top: 80px;
+}
+
+h1 {
+    background-color: red;
+}
+
+h5 {
+    margin-bottom: 16px;
+}
+
+p {
+    padding: 8px;
+    transition: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+}
+
+.active > span {
+    background-color: var(--cbs-primary);
+    padding: 8px;
+    border-radius: 3px;
+    color: white;
+    display: inline-block;
+}
+
+nav.navbar {
+    background-color: white;
+}

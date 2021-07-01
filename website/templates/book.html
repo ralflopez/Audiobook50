@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{book_details.title}}
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename="css/book.css")}}" rel="stylesheet" />
+{% endblock %}
+
+{% block main%}
+    <div class="container mt-spacing">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="title text-secondary">{{book_details.title}}</h2>
+                <h5 class="author text-secondary">{{book_details.author}}</h5>
+            </div>
+            <div class="col-12">
+                <div class="mb-5 mt-3">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span id="current-time" class="font-weight-bold">0</span>
+                        <span id="duration">0</span>
+                    </div>
+                    <input id="player-time" type="range" class="form-range mb-3" min="0" max="0" id="customRange2" disabled>
+                    <button class="btn btn-primary" id="play">Play</button>
+                    <button class="btn btn-outline-secondary" id="pause">Pause</button>
+                    <button class="btn btn-secondary" id="stop">Stop</button>
+                </div>
+                <div id="player"></div>
+                <div id="transcript-parent-container">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script%}
+    <script>
+        const v_id = "{{v_id}}"
+    </script>
+    <script src="{{url_for('static', filename="js/book/fetch_transcript.js")}}"></script>
+    <script src="{{url_for('static', filename="js/book/player_controls.js")}}"></script>
+    <script src="{{url_for('static', filename="js/book/extra.js")}}"></script>
+{% endblock %}
