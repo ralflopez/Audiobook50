@@ -1,6 +1,10 @@
 from flask import Flask
 from flask.helpers import url_for
 from flask_session import Session
+from .packages.SQL import SQL
+import os
+
+db = SQL(os.path.abspath('website/audiobook50.db'))
 
 def create_app():
     app = Flask(__name__)

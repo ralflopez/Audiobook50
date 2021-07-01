@@ -41,7 +41,9 @@ bg-primary {
     background-color: var(--cbs-primary-hover);
 }
 
-
+input:hover, input:focus {
+    box-shadow: var(--cbs-primary) !important;
+}
 
 
 /* change secondary */
