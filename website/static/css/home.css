@@ -2,44 +2,57 @@ img {
     object-fit: cover;
 }
 
-h1 {
+h3 {
     font-size: 5vw;
-    font-weight: 700;
+    font-weight: 600;
+    margin-bottom: 16px;
 }
 
-p {
-    font-size: 1.1rem;
-}
-
-.circle-action {
-    background-color: var(--cbs-secondary);
-    width: 150px;
-    height: 150px;
-    border-radius: 9999px;
-    padding: 25px;
-    color: white;
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-}
-
-.circle-action:hover {
-    color: white;
-    background-color: var(--cbs-secondary-hover);
-}
-
-.bg-img {
-    position: absolute;
+.bg {
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100%;
     z-index: -10;
 }
 
-@media (max-width: 767.98px) {
-    h1 {
-        font-size: 3rem;
+.parent-container {
+    background: linear-gradient(162.68deg, #FFFFFF 11.89%, #E8E8E8 92.56%);
+    width: 100%;
+}
+
+.hero-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: -10px;
+    /* background-color: darksalmon; */
+}
+
+.hero-img {
+    width: 80%;
+    /* background-color: blueviolet; */
+}
+
+.title-container {
+    position: relative;
+    top: -20px;
+}
+
+@media (max-width: 991.98px) {
+    .title-container {
+        text-align: center;
     }
-    p {
-        font-size: 1.2rem;
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .hero-container {
+        top: 20px;
+    }
+
+    .title-container {
+        top: 0;
     }
 }

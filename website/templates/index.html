@@ -9,23 +9,22 @@
 {% endblock %}
 
 {% block main%}
-    <div class="container-fluid overflow-hidden">
-        <div class="row full-height">
-            <div class="col-12 col-md-7 full-height d-flex flex-column justify-content-around position-relative p-0">
-                <div class="text-cener">
-                    <h1 class="mb-3 text-center">Audiobook<span class="text-primary">50</span></h1>
-                    <p class="text-center">Listen to your favorite audio books with captions</p>
+    <div class="position-relative overflow-hidden parent-container">
+        <div class="container position-relative overflow-hidden">
+            <div class="row full-height">
+                <div class="col-12 col-md-5 d-flex flex-column justify-content-around order-2 order-md-first">
+                    <div class="title-container">
+                        <h3 class="mb-5 text-black">Get more out of your audiobooks</h3>
+                        <a href="/catalogue" class="btn btn-primary btn-lg">Listen Now</a>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <a href="/catalogue" class="btn circle-action">
-                        Listen
-                    </a>
+                <div class="col-12 col-md-7">
+                    <div class="position-relative hero-container d-flex justify-content-center align-items-center">
+                        <img class="hero-img" src="{{url_for('static', filename="img/hero.png")}}" alt="audiobook"/>
+                    </div>
                 </div>
-                <img src="{{url_for('static', filename="img/headphones.png")}}" alt="headphones" class="bg-img" />
-            </div>
-            <div class="col-5 d-none d-md-block full-height bg-secondar position-relative p-0">
-                <img class="potision-absolute fit-container" src="{{url_for('static', filename="img/listen.jpg")}}" alt="audiobook50" />
             </div>
         </div>
+        <img class="position-absolute bg" src="{{url_for('static', filename="img/sound-wave.svg")}}" alt="sound-wave"/>
     </div>
 {% endblock %}
