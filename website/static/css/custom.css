@@ -91,3 +91,25 @@ h1, h2, h3, h4, h5, h6, p, div, a {
     right: 0;
     z-index: 20;
 }
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--cbs-secondary-hover);
+    border-radius: 99px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--cbs-secondary);
+  }
