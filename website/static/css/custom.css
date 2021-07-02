@@ -1,11 +1,12 @@
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f7f7f7;
 }
 
 :root {
-    --cbs-primary: #9CA3E4;
+    --cbs-primary: #8f98e5;
     --cbs-secondary: #16171A;
-    --cbs-primary-hover: #747aac;
+    --cbs-primary-hover: rgb(96, 104, 175);
     --cbs-secondary-hover: #3b3b3b;
 }
 
@@ -112,4 +113,8 @@ h1, h2, h3, h4, h5, h6, p, div, a {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: var(--cbs-secondary);
+  }
+
+  .cursor-pointer {
+      cursor: pointer;
   }

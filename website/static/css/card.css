@@ -1,0 +1,17 @@
+.card {
+    border-left-width: 5px;
+    border-color: white;
+    border-bottom-width: 5px;
+}
+
+.card.not-mine {
+    border-bottom-color: var(--cbs-secondary-hover);
+}
+
+.card.mine {
+    border-bottom-color: var(--cbs-primary);
+}
+
+.card .card-link {
+    color: #5B69ED !important;
+}

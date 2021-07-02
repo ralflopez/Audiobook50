@@ -43,6 +43,13 @@ function onPlayerReady(event) {
     })
     document.getElementById('stop').addEventListener('click', () => {
         event.target.stopVideo()
+        const prev = transcriptParentContainer.querySelectorAll('.active')
+        if (prev) {
+            prev.forEach(t => {
+              t.className = ''
+              t.setAttribute('id', '')
+            })
+        }
     })
 
     playerTime.addEventListener('mousedown', () => {
@@ -80,9 +87,15 @@ function getCurrentTime() {
     if (active.length) {
           const prev = transcriptParentContainer.querySelectorAll('.active')
           if (prev) {
-              prev.forEach(t => t.className = '')
+              prev.forEach(t => {
+                t.className = ''
+                t.setAttribute('id', '')
+              })
           }
-          active.forEach(t => t.className = 'active')
+          active.forEach(t => {
+            t.className = 'active'
+            t.setAttribute('id', 'active')
+          })
     }
     
     window.requestAnimationFrame(getCurrentTime)
