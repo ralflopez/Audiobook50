@@ -1,0 +1,42 @@
+#loading-screen {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(162.68deg, rgba(255, 255, 255, 0) 11.89%, #E8E8E8 92.56%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(200px);
+    transition: all 250ms ease-out;
+}
+
+.loading-screen-logo {
+    width: 400px;
+    position: absolute;
+    z-index: 25;
+}
+
+.loading-screen-circle {
+    background-color: var(--cbs-primary);
+    width: 200px;
+    height: 200px;
+    z-index: 20;
+    border-radius: 9999px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+
+}

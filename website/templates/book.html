@@ -6,9 +6,14 @@
 
 {% block style %}
     <link href="{{url_for('static', filename="css/book.css")}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename="css/loading.css")}}" rel="stylesheet" />
 {% endblock %}
 
 {% block main%}
+    <div id="loading-screen">
+        <img class="loading-screen-logo" src="{{url_for('static', filename="img/Audiobook50.png")}}" alt="audiobook50"/>
+        <div class="loading-screen-circle"></div>
+    </div>
     <div class="container mt-spacing">
         <div class="row">
             <div class="col-12">
@@ -36,7 +41,7 @@
 
 {% block script%}
     <script>
-        const v_id = "{{v_id}}"
+        const v_id = "{{book_details.id}}"
     </script>
     <script src="{{url_for('static', filename="js/book/fetch_transcript.js")}}"></script>
     <script src="{{url_for('static', filename="js/book/player_controls.js")}}"></script>
