@@ -22,7 +22,7 @@ def book_invalid():
 @views.route('/catalogue')
 @login_required
 def catalogue():
-    book_list = db.execute('SELECT books.id, title, name as author, authors.id as author_id FROM books JOIN authors ON authors.id = books.author_id ORDER BY title;')
+    book_list = db.execute('SELECT books.id, title, name as author, books.contributor_id as contributor_id FROM books JOIN authors ON authors.id = books.author_id ORDER BY title;')
     print(book_list)
     return render_template('catalogue.html', book_list=book_list, user_id=session.get('user_id'))
 
@@ -74,12 +74,28 @@ def contribute():
         author_id = author_id_res[0]['id']
 
         # push to db
-        db.execute('INSERT INTO books (id, title, author_id, contributor_id) VALUES (?, ?, ?, ?);', id, title, author_id, user_id)
+        try:
+            db.execute('INSERT INTO books (id, title, author_id, contributor_id) VALUES (?, ?, ?, ?);', id, title, author_id, user_id)
+        except: 
+            return apology('Book already exist')
 
         return redirect('/catalogue')
 
     else:
         return render_template('contribute.html')
+
+
+@views.route('/profile')
+@login_required
+def profile():
+    user_id = session.get('user_id')
+
+    saves_list = db.execute('SELECT books.id, books.title, authors.name AS author, books.contributor_id FROM saves JOIN books ON books.id = saves.book_id JOIN authors on authors.id = books.author_id WHERE saves.user_id = ? ORDER BY title;', user_id)
+
+    contribution_list = db.execute('SELECT books.id, books.title, authors.name AS author, books.contributor_id FROM books JOIN authors ON books.author_id = authors.id WHERE books.contributor_id = ?;', user_id)
+    
+    return render_template('profile.html', saves_list=saves_list, contribution_list=contribution_list, user_id=user_id)
+
 
 
 @views.route('/login', methods=['GET', 'POST'])

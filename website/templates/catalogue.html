@@ -6,6 +6,7 @@
 
 {% block style %}
     <link href="{{url_for('static', filename="css/catalogue.css")}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename="css/card.css")}}" rel="stylesheet" />
 {% endblock %}
 
 {% block main%}
@@ -18,12 +19,12 @@
             <div class="col-12 mb-4">
                 {% if book_list|length > 0 %}
                     {% for book in book_list %}
-                        <div class="card mb-3 {% if book_list.author_id == user_id %}mine{% else %}not mine{% endif %}">
+                        <div class="card mb-3 shadow-sm {% if book.contributor_id == user_id %}mine{% else %}not mine{% endif %}">
                             <div class="card-body">
-                                <h5 class="card-title">{{book.title}}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
-                                <a href="book/{{book.id}}" class="card-link text-primary">Read / Listen</a>
-                                <a href="#" class="card-link text-primary save" for="{{book.id}}">Save</a>
+                                <h5 class="card-title" style="font-weight:medium;">{{book.title}}</h5>
+                                <h6 class="card-subtitle mb-4 text-muted" style="font-size: 0.9rem">{{book.author}}</h6>
+                                <a href="book/{{book.id}}" class="card-link text-primary text-decoration-none">Read / Listen</a>
+                                <a class="card-link text-primary text-decoration-none save cursor-pointer" for="{{book.id}}">Save</a>
                             </div>
                         </div>
                     {% endfor %}

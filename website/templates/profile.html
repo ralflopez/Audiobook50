@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename="css/card.css")}}" rel="stylesheet" />
+    <style>#navlink-profile { font-weight: bold }</style>
+{% endblock %}
+
+{% block main%}
+    <div class="mt-5 pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="text-center mb-3">Hello, Name</h2>
+                    <div class="text-center mb-4">
+                        <form action="/logout" method="GET">
+                            <button class="btn btn-primary mx-auto">Log Out</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h5 class="text-center mb-3">Saved Books</h5>
+                    {% if saves_list|length > 0 %}
+                        {% for book in saves_list %}
+                            <div class="card mb-3 {% if book.contributor_id == user_id %}mine{% else %}not-mine{% endif %}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{book.title}}</h5>
+                                    <h6 class="card-subtitle mb-4 text-muted">{{book.author}}</h6>
+                                    <a href="book/{{book.id}}" class="card-link text-primary text-decoration-none">Read / Listen</a>
+                                    <a class="card-link text-primary text-decoration-none unsave cursor-pointer" for="{{book.id}}">Unsave</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="col-6">
+                    <h5 class="text-center mb-3">Contributions</h5>
+                    {% if contribution_list|length > 0 %}
+                        {% for book in contribution_list %}
+                            <div class="card mb-3 {% if book.contributor_id == user_id %}mine{% else %}not-mine{% endif %}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{book.title}}</h5>
+                                    <h6 class="card-subtitle mb-4 text-muted">{{book.author}}</h6>
+                                    <a href="book/{{book.id}}" class="card-link text-primary text-decoration-none">Read / Listen</a>
+                                    <a class="card-link text-primary text-decoration-none save cursor-pointer" for="{{book.id}}">Save</a>
+                                    <a class="card-link text-primary text-decoration-none delete-book cursor-pointer" for="{{book.id}}">Delete</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='js/catalogue/save.js')}}"></script>
+{% endblock %}
