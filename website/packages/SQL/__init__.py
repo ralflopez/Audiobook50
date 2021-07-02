@@ -8,9 +8,21 @@ class SQL:
         self.connection = sqlite3.connect(self.uri)
         self.connection.row_factory = self.dict_factory
         self.cursor = self.connection.cursor()
+        params = args if len(args) else None
+        
+        if params:
+            try:
+                self.cursor.execute(query_string, args)
+                rows = self.cursor.fetchall()
+            except:
+                rows = []
+        else:
+            try:
+                self.cursor.execute(query_string)
+                rows = self.cursor.fetchall()
+            except:
+                rows = []
 
-        self.cursor.execute(query_string, args if len(args) else None)
-        rows = self.cursor.fetchall()
 
         self.connection.commit()
         self.connection.close()
