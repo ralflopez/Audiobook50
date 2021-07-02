@@ -19,15 +19,25 @@ def book_invalid():
     return redirect('/')
 
 
+@views.route('/catalogue')
+@login_required
+def catalogue():
+    book_list = db.execute('SELECT v_id, title, name as author FROM books JOIN authors ON authors.id = books.author_id ORDER BY title;')
+    print(book_list)
+    return render_template('catalogue.html', book_list=book_list)
+
+
 @views.route('/book/<v_id>')
 @login_required
 def book(v_id):
-    book_details = {
-        'title': 'The Art of War',
-        'author': 'Sun Tzu'
-    }
+    rows = db.execute('SELECT v_id, title, name as author FROM books JOIN authors ON authors.id = books.author_id WHERE v_id = ?', v_id)
+    
+    # no book found
+    if not len(rows):
+        return apology('Book not found')
 
-    return render_template('book.html', book_details=book_details, v_id=v_id)
+    book_details = rows[0]
+    return render_template('book.html', book_details=book_details)
 
 
 @views.route('/login', methods=['GET', 'POST'])
@@ -73,7 +83,7 @@ def login():
 @views.route("/register", methods=["GET", "POST"])
 def register():
 
-    if session['user_id']:
+    if session.get('user_id'):
         return redirect('/')
 
     """Register user"""
