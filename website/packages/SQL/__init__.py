@@ -14,7 +14,9 @@ class SQL:
             try:
                 self.cursor.execute(query_string, args)
                 rows = self.cursor.fetchall()
-            except:
+            except ValueError:
+                print('***************ERRRORROOR*************')
+                print(ValueError)
                 rows = []
         else:
             try:

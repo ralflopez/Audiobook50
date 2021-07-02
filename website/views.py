@@ -22,15 +22,15 @@ def book_invalid():
 @views.route('/catalogue')
 @login_required
 def catalogue():
-    book_list = db.execute('SELECT v_id, title, name as author FROM books JOIN authors ON authors.id = books.author_id ORDER BY title;')
+    book_list = db.execute('SELECT books.id, title, name as author, authors.id as author_id FROM books JOIN authors ON authors.id = books.author_id ORDER BY title;')
     print(book_list)
-    return render_template('catalogue.html', book_list=book_list)
+    return render_template('catalogue.html', book_list=book_list, user_id=session.get('user_id'))
 
 
 @views.route('/book/<v_id>')
 @login_required
 def book(v_id):
-    rows = db.execute('SELECT v_id, title, name as author FROM books JOIN authors ON authors.id = books.author_id WHERE v_id = ?', v_id)
+    rows = db.execute('SELECT books.id, title, name as author FROM books JOIN authors ON authors.id = books.author_id WHERE books.id = ?', v_id)
     
     # no book found
     if not len(rows):
@@ -38,6 +38,48 @@ def book(v_id):
 
     book_details = rows[0]
     return render_template('book.html', book_details=book_details)
+
+
+@views.route('/contribute', methods=['GET', 'POST'])
+@login_required
+def contribute():
+    if request.method == 'POST':
+        user_id = session.get('user_id')
+
+        title = request.form.get('title')
+        author = request.form.get('author')
+        url = request.form.get('yt-url')
+
+        if not title or not author or not url:
+            return apology('Please complete info')
+
+        # get id from url
+        try:
+            start = url.index('?v=') + 3
+        except:
+            return apology('Invalid URL')
+
+        try:
+            end = url.index('&')
+        except:
+            end = len(url)
+
+        id = url[start: end]
+        # get author
+        author_id_res = db.execute('SELECT id FROM authors WHERE name LIKE ? LIMIT 1;', f'%{author}%')
+        if not len(author_id_res):
+            db.execute('INSERT INTO authors (name) VALUES (?);', author)
+            author_id_res = db.execute('SELECT id FROM authors WHERE name = ? LIMIT 1;', author)
+
+        author_id = author_id_res[0]['id']
+
+        # push to db
+        db.execute('INSERT INTO books (id, title, author_id, contributor_id) VALUES (?, ?, ?, ?);', id, title, author_id, user_id)
+
+        return redirect('/catalogue')
+
+    else:
+        return render_template('contribute.html')
 
 
 @views.route('/login', methods=['GET', 'POST'])

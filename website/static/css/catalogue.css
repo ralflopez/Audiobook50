@@ -9,3 +9,15 @@
 .catalogue-title {
     font-weight: 600;
 }
+
+.card {
+    border-left-width: 5px;
+}
+
+.card.mine {
+    border-left-color: var(--cbs-secondary-hover);
+}
+
+.card.not-min {
+    border-left-color: var(--cbs-primary);
+}

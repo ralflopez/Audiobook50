@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title%}
+    Login
+{% endblock %}
+
+{% block style %}
+    <link href="{{url_for('static', filename="css/auth.css")}}" rel="stylesheet" />
+{% endblock %}
+
+{% block main %}
+    <div class="container mt-5 pt-3">
+        <div class="row">
+            <div class="col-12">
+                <form action="/contribute" method="POST" class="mx-auto mb-5 shadow-sm p-3 pb-4 pt-4 p-md-5" style="max-width: 400px">
+                    <h5 class="mb-3 font-weight-bold text-center">Contribute</h5>
+                    <div class="form-group mb-3">
+                        <label for="title">Tile</label>
+                        <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Title">
+                    </div>
+                    <div class="form-group mb-4 author" type="new">
+                        <label for="author">Author</label>
+                        <input name="author" type="text" class="form-control mb-1" id="author" placeholder="Author">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="yt-url">Youtube URL</label>
+                        <input name="yt-url" type="text" class="form-control" id="yt-url" placeholder="Youtube URL" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn btn-primary d-block">Contribute</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
