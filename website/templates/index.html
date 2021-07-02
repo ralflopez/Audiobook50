@@ -1,11 +1,17 @@
 {% extends "layout.html" %}
 
+{% block meta %}
+    <meta name="description" content="A cs50x final project that uses youtube to get audio and transcripts from audiobooks">
+    <meta name="keywords" content="audiobook, youtube audiobook, audiobook transcription, cs50, cs50x">
+    <meta name="author" content="Ralf Lopez">
+{% endblock %}
+
 {% block title%}
     Home
 {% endblock %}
 
 {% block style %}
-    <link href="{{url_for('static', filename="css/home.css")}}" rel="stylesheet" />
+    <link href="{{url_for('static', filename="css/home.min.css")}}" rel="stylesheet" />
 {% endblock %}
 
 {% block main%}
