@@ -5,7 +5,7 @@ async function fetchTranscript() {
     const res = await fetch(`/api/transcript?v=${v_id}`)
     const transcript = await res.json()
 
-    let innerHTMLContent
+    let innerHTMLContent = ''
     transcript.forEach(line => {
         if (isNaN(line.text)) {
             [ms, mews] = line.start.toString().split('.')
